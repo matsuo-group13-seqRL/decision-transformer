@@ -47,19 +47,19 @@ class FixedReplayBuffer(object):
 
   def _load_buffer(self, suffix):
     """Loads a OutOfGraphReplayBuffer replay buffer."""
-    try:
+    #try:
       # pytype: disable=attribute-error
-      replay_buffer = circular_replay_buffer.OutOfGraphReplayBuffer(
-          *self._args, **self._kwargs)
-      replay_buffer.load(self._data_dir, suffix)
-      tf.logging.info('Loaded replay buffer ckpt {} from {}'.format(
-          suffix, self._data_dir))
-      # pytype: enable=attribute-error
-      print("replay buffer is prepared")
-      return replay_buffer
-    except tf.errors.NotFoundError:
-      print("replay buffer is none")
-      return None
+    replay_buffer = circular_replay_buffer.OutOfGraphReplayBuffer(
+        *self._args, **self._kwargs)
+    replay_buffer.load(self._data_dir, suffix)
+    tf.logging.info('Loaded replay buffer ckpt {} from {}'.format(
+        suffix, self._data_dir))
+    # pytype: enable=attribute-error
+    print("replay buffer is prepared")
+    return replay_buffer
+    #except tf.errors.NotFoundError:
+    #  print("replay buffer is none")
+    #  return None
 
   def _load_replay_buffers(self, num_buffers=None):
     """Loads multiple checkpoints into a list of replay buffers."""
