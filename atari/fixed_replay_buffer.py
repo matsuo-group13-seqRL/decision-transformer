@@ -57,6 +57,7 @@ class FixedReplayBuffer(object):
       # pytype: enable=attribute-error
       return replay_buffer
     except tf.errors.NotFoundError:
+      print("replay buffer is none")
       return None
 
   def _load_replay_buffers(self, num_buffers=None):
