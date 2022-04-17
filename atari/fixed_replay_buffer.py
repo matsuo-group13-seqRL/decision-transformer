@@ -55,6 +55,7 @@ class FixedReplayBuffer(object):
       tf.logging.info('Loaded replay buffer ckpt {} from {}'.format(
           suffix, self._data_dir))
       # pytype: enable=attribute-error
+      print("replay buffer is prepared")
       return replay_buffer
     except tf.errors.NotFoundError:
       print("replay buffer is none")
